@@ -2,10 +2,7 @@ export class MeAtWooliesPage {
     constructor(page) {
         this.page = page;
         this.peopleRequest = "//span[text()='Raise a People Services request']"
-        //Benefits
-        this.benefitTitle = "//h5[text()='Benefits']"
-        //Career and Recruitment
-        this.benefitTitle = "//h5[text()='Career and Recruitment']"
+
 
         this.raisingSomeone = "(//span[@class='slds-radio_faux'])[1]"
         this.newRequest = "//button[@aria-label='Is this a new request?']"
@@ -13,22 +10,79 @@ export class MeAtWooliesPage {
         this.existingNumber = "//input[@name='caseNum']"
 
         //Benefit Category
-        this.benefitSubCatValue = "lightning-base-combobox-item"
-        this.benefitSubCatClick = "//button[@aria-label='Sub Category']"
-        this.benefitsCatbenefitsOffersSubCat = "//span[@title='Benefits/Offers']"
-        this.benefitsCatContinuityAggregateServiceSubCat = "//span[@title='Continuity/ Aggregate Service']"
-        this.benefitsCatDiscountCardsSubCat = "//span[@title='Discount cards']"
-        this.benefitsCatNovatedLeaseSubCat = "//span[@title='Novated Lease']"
-        this.benefitsCatOtherSubCat = "//span[@title='Other']"
-        this.benefitsCatParentalLeaveGiftCardSubCat = "//span[@title='Parental Leave - Gift Card']"
-        this.benefitsCatParentalLeaveSuperannuationSubCat = "//span[@title='Parental Leave - Superannuation']"
-        this.benefitsCatPlusCardSubCat = "//span[@title='PlusCard']"
-        this.benefitsCatPlusCardLossPreventionSubCat = "//span[@title='PlusCard - Loss Prevention']"
-        this.benefitsCatPlusCardNotWorkingSubCat = "//span[@title='PlusCard - Not Working']"
-        this.benefitsCatServiceAnniversariesSubCat = "//span[@title='Service Anniversaries']"
-        this.benefitsCatSuperannuationPolicySubCat = "//span[@title='Superannuation Policy']"
+        this.benefitTitle = "//h5[text()='Benefits']"
+        this.subCatFieldClick = "//button[@aria-label='Sub Category']"
+        this.subcatDropdown = "//span[@title='${subcatName}']";
 
+        //Pay and Basics Category
+        this.payAndBasicsTitle = "//h5[text()='Pay and the Basics']"
 
+        //Career and Recruitment Category
+        this.careerAndRecuritmentTitle = "//h5[text()='Career and Recruitment']"
+
+        //Workplace Adjustment & Flexible Work Request Category
+        this.workplaceAdjustmentTitle = "//h5[text()='Workplace Adjustment & Flexible Workplace Request']"
+
+        //Leaving the Company Category  
+        this.leavingTheCompanyTitle = "//h5[text()='Leaving the Company']"
+
+        //Kronos Category
+        this.kronsTitle = "//h5[text()='Kronos']"
+
+        //Team Data App Category
+        this.teamDataAppTitle = "//h5[text()='Team Data App']"
+
+        //SuccessFactors Technical Issues Category
+        this.successFactorsTechnicalIssuesTitle = "//h5[text()='SuccessFactors Technical Issues']"
+
+        //Development and Learning Category
+        this.developmentAndLearningTitle = "//h5[text()='Development and Learning']"
+
+        //WorkJam Category
+        this.workJamTitle = "//h5[text()='WorkJam']"
+
+        //Proactive Services T&A Category
+        this.proactiveServicesTitle = "//h5[text()='Proactive Services T&A']"
+
+        //W360 T&A Category
+        this.w360Title = "//h5[text()='W360 T&A']"
+
+        //Team View Category
+        this.teamViewTitle = "//h5[text()='Team View']"
+
+        //Mobility Category
+        this.mobilityTitle = "//h5[text()='Mobility']"
+
+        //People Dashboard Queries Category
+        this.peopleDashboardQueriesTitle = "//h5[text()='People Data Self-Service']"
+
+        //Remuneration Category
+        this.remunerationTitle = "//h5[text()='Remuneration']"
+
+        //Casual Conversion Category
+        this.casualConversionTitle = "//h5[text()='Casual Conversion']"
+
+        //Report Requests Category
+        this.reportRequestsTitle = "//h5[text()='Report Requests']"
+        this.targetedDeliveryDate = "//input[@name='Targeted_Delivery_Date__c']"
+        this.requestFrequency = "//button[@name='Request Frequency']"
+        this.requestFrequencyAdHoc = "[data-value='Ad Hoc Request (Created and shared to run as required on ongoing basis)']"
+        this.requestFrequencyOneOff = "[data-value='One-off request']"
+        this.requestFrequencyRegularScheduleReports = "[data-value='Regular/Scheduled Report']"
+        this.specifyReportingPeriod = "//input[@name='Specify Reporting Period']"
+        this.reportdatarequest = "//textarea[@name='Provide a description and purpose of the report / data request']"
+        this.fieldsAreRequired = "//textarea[@name='Please specify the format of the output file']"
+        this.employeePopulationIsTheData = "//textarea[@name='What employee population is the data / report required for?']"
+        this.specificationsRequired = "//textarea[@name='Are there any other filters or specifications required for this report?']"
+        this.outputFile = "//button[@name='Please specify the format of the output file']"
+        this.outputFile_CSV = "[data-value='CSV']"
+        this.outputFile_Excel = "[data-value='Google Sheet']"
+        this.outputFile_Xlsx = "[data-value='Xlsx']"
+        this.audience = "//button[@name='Audience']"
+        this.audience_ER = "[data-value='Employee Relations']"
+        this.audience_HR = "[data-value='Legal']"
+        this.audience_Legal = "[data-value='Legal']"
+        this.audience_NonHR = "[data-value='Non HR']"
         this.theirFirstName = "//input[@placeholder='Enter Name or Employee ID']"
         this.selecttheirName = "[data-subfield='Saravanan Sekar']"
         this.nextButton = "//button[text()='Next']"
@@ -40,26 +94,99 @@ export class MeAtWooliesPage {
         this.submitButton = "//button[text()='Submit']"
         this.previousButton = "//button[text()='Previous']"
         this.caseNumber = "//div[@class='cardNumCont']/h2"
+
         this.returnToPeopleServices = "[title='Return to People Services']"
 
 
 
 
     }
-
-
+    async selectSubcatDropdown(subcatName) {
+        await this.page.locator(this.subCatFieldClick).waitFor({ state: 'visible' });
+        await this.page.locator(this.subCatFieldClick).click();
+        const dynamicDropdownvalue = await this.page.locator(this.subcatDropdown.replace('${subcatName}', subcatName));
+        await dynamicDropdownvalue.waitFor({ state: 'visible' });
+        await dynamicDropdownvalue.click();
+        //await this.page.screenshot({ path: `./screenshots/${subcatName}.png` });
+    }
     async clickOnpeopleRequest() {
         await this.page.locator(this.peopleRequest).waitFor({ state: 'visible' });
         await this.page.locator(this.peopleRequest).click();
+    }
+
+    async clickOnpayAndBasicsTitle() {
+        await this.page.locator(this.payAndBasicsTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.payAndBasicsTitle).click();
     }
     async clickOnbenefitTitle() {
         await this.page.locator(this.benefitTitle).waitFor({ state: 'visible' });
         await this.page.locator(this.benefitTitle).click();
     }
     async clickOnCareerAndRecruitmentTitle() {
-        await this.page.locator(this.benefitTitle).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitTitle).click();
+        await this.page.locator(this.careerAndRecuritmentTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.careerAndRecuritmentTitle).click();
     }
+    async clickOnWorkplaceAdjustmentTitle() {
+        await this.page.locator(this.workplaceAdjustmentTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.workplaceAdjustmentTitle).click();
+    }
+    async clickOnLeavingTheCompanyTitle() {
+        await this.page.locator(this.leavingTheCompanyTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.leavingTheCompanyTitle).click();
+    }
+    async clickOnKronsTitle() {
+        await this.page.locator(this.kronsTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.kronsTitle).click();
+    }
+    async clickOnTeamDataAppTitle() {
+        await this.page.locator(this.teamDataAppTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.teamDataAppTitle).click();
+    }
+    async clickOnSuccessFactorsTechnicalIssuesTitle() {
+        await this.page.locator(this.successFactorsTechnicalIssuesTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.successFactorsTechnicalIssuesTitle).click();
+    }
+    async clickOnDevelopmentAndLearningTitle() {
+        await this.page.locator(this.developmentAndLearningTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.developmentAndLearningTitle).click();
+    }
+    async clickOnWorkJamTitle() {
+        await this.page.locator(this.workJamTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.workJamTitle).click();
+    }
+    async clickOnProactiveServicesTitle() {
+        await this.page.locator(this.proactiveServicesTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.proactiveServicesTitle).click();
+    }
+    async clickOnW360Title() {
+        await this.page.locator(this.w360Title).waitFor({ state: 'visible' });
+        await this.page.locator(this.w360Title).click();
+    }
+    async clickOnTeamViewTitle() {
+        await this.page.locator(this.teamViewTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.teamViewTitle).click();
+    }
+    async clickOnMobilityTitle() {
+        await this.page.locator(this.mobilityTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.mobilityTitle).click();
+    }
+    async clickOnPeopleDashboardQueriesTitle() {
+        await this.page.locator(this.peopleDashboardQueriesTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.peopleDashboardQueriesTitle).click();
+    }
+    async clickOnRemunerationTitle() {
+        await this.page.locator(this.remunerationTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.remunerationTitle).click();
+    }
+    async clickOnCasualConversionTitle() {
+        await this.page.locator(this.casualConversionTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.casualConversionTitle).click();
+    }
+    async clickOnReportRequestsTitle() {
+        await this.page.locator(this.reportRequestsTitle).waitFor({ state: 'visible' });
+        await this.page.locator(this.reportRequestsTitle).click();
+    }
+
     async clickonRaisingSomeone() {
         await this.page.locator(this.raisingSomeone).waitFor({ state: 'visible' });
         await this.page.locator(this.raisingSomeone).click();
@@ -79,79 +206,6 @@ export class MeAtWooliesPage {
         // await this.page.waitForTimeout(5000);
     }
 
-    async selectbenefitsCatbenefitsOffersSubCat(subcatNum) {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        // await this.page.locator(this.benefitsCatbenefitsOffersSubCat).waitFor({ state: 'visible' });
-        // await this.page.locator(this.benefitsCatbenefitsOffersSubCat).click();
-        await this.page.locator(this.benefitSubCatValue).nth(subcatNum).click();
-    }
-    async selectbenefitsCatContinuityAggregateServiceSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatContinuityAggregateServiceSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatContinuityAggregateServiceSubCat).click();
-    }
-    async selectbenefitsCatDiscountCardsSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatDiscountCardsSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatDiscountCardsSubCat).click();
-    }
-    async selectbenefitsCatNovatedLeaseSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatNovatedLeaseSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatNovatedLeaseSubCat).click();
-    }
-    async selectbenefitsCatOtherSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatOtherSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatOtherSubCat).click();
-    }
-    async selectbenefitsCatParentalLeaveGiftCardSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatParentalLeaveGiftCardSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatParentalLeaveGiftCardSubCat).click();
-    }
-    async selectbenefitsCatParentalLeaveSuperannuationSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatParentalLeaveSuperannuationSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatParentalLeaveSuperannuationSubCat).click();
-    }
-    async selectbenefitsCatPlusCardSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatPlusCardSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatPlusCardSubCat).click();
-    }
-    async selectbenefitsCatPlusCardLossPreventionSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatPlusCardLossPreventionSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatPlusCardLossPreventionSubCat).click();
-    }
-    async selectbenefitsCatPlusCardNotWorkingSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatPlusCardNotWorkingSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatPlusCardNotWorkingSubCat).click();
-    }
-    async selectbenefitsCatServiceAnniversariesSubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatServiceAnniversariesSubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatServiceAnniversariesSubCat).click();
-    }
-    async selectbenefitsCatSuperannuationPolicySubCat() {
-        await this.page.locator(this.benefitSubCatClick).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitSubCatClick).click();
-        await this.page.locator(this.benefitsCatSuperannuationPolicySubCat).waitFor({ state: 'visible' });
-        await this.page.locator(this.benefitsCatSuperannuationPolicySubCat).click();
-    }
 
     async fillTheName(firstName) {
         await this.page.locator(this.theirFirstName).waitFor({ state: 'visible' });
@@ -170,6 +224,7 @@ export class MeAtWooliesPage {
         await this.page.fill(this.subject, subject);
         // await this.page.waitForTimeout(5000);
     }
+
     async clickOnNext() {
         await this.page.locator(this.nextButton).waitFor({ state: 'visible' });
         await this.page.locator(this.nextButton).click();
@@ -212,6 +267,8 @@ export class MeAtWooliesPage {
         console.log(caseNumberTrimmed);  // Log the case number
         return caseNumberTrimmed;  // Return the trimmed case number
     }
+
+
     async clickOnReturnToPeopleServices() {
         await this.page.locator(this.returnToPeopleServices).waitFor({ state: 'visible' });
         await this.page.locator(this.returnToPeopleServices).click();

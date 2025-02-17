@@ -1,24 +1,17 @@
 {
-  "username": "ssekar7@tcs.woolworths.com.au.hruat.wow",
+  "username": "ssekar7@tcs.woolworths.com.au.hrprod.wowpsuat",
   "password": "Welcome@3",
   "loginuser": "Govind Misra -",
+  "nzLoginuser": "Georgia Waratini",
   "searchWoolies": "Me@Woolies",
+  "searchWoolworthsNZ": "Woolworths NZ",
   "searchPeopleServices": "PeopleServices",
   "existingCaseNumber": "02917124",
-  "firstName": "Saravanan",
-  "lastName": "Sekar",
+  "firstName": "Saravanan Sekar",
   "employeeId": "1379750",
   "subject": "Automation Testing",
   "phoneNumber": "757545676",
   "email": "ssekar7@tcs.woolworths.com.au",
-  "caseNumber": {
-    "2": "04246575",
-    "3": "04246576",
-    "4": "04246577",
-    "5": "04246578",
-    "6": "04246579",
-    "7": "04246580",
-    "8": "04246581",
-    "9": "04246561"
-  }
+  "wps": "QA Automation_Workplace Support Cases",
+  "er": "QA Automation ER Case"
 }
